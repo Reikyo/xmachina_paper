@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  4 DEC 2015 17:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 DEC 2015 00:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -267,59 +267,63 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
  [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 234.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 234.
- [3]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 306.
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [2]
+[3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 241.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 241.
+ [4]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 313.
 
-(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 306.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 313.
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 361--363
 []\OT1/ptm/m/n/10 Install the Mi-crosoft Save as PDF Of-fice 2007 Add-in from [
 ]$\OT1/pcr/m/n/10 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 361--363
 \OT1/pcr/m/n/10 / / www . microsoft . com / downloads / details . aspx ? displa
 ylang =
  []
 
-[4]
+[5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 422.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 429.
+ [6]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 437.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 440.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 440.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 444.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 447.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 447.
  (./CMPT419726_Paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 440.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 440.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 447.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 447.
 Package rerunfilecheck Info: File `CMPT419726_Paper.out' has not changed.
-(rerunfilecheck)             Checksum: 27E41D45B93D71C088877D2C55202435;976.
+(rerunfilecheck)             Checksum: 9A7FB08A192D09B5E905038C054D70E9;955.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 440.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 447.
  ) 
 Here is how much of TeX's memory you used:
- 5519 strings out of 493315
- 80640 string characters out of 6137904
+ 5521 strings out of 493315
+ 80652 string characters out of 6137904
  172984 words of memory out of 5000000
  8904 multiletter control sequences out of 15000+600000
  28205 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,12n,39p,742b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,39p,1341b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -330,10 +334,10 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on CMPT419726_Paper.pdf (5 pages, 117355 bytes).
+Output written on CMPT419726_Paper.pdf (7 pages, 122742 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
  121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
