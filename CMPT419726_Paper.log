@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 DEC 2015 10:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 DEC 2015 12:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -256,21 +256,21 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./CMPT419726_Paper.aux)
 \openout1 = `CMPT419726_Paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 49.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -291,7 +291,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \makeMPintoPDFobject=\count120
 \everyMPtoPDFconversion=\toks21
 )
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 49.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -300,144 +300,136 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count121
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
 
 (./CMPT419726_Paper.out) (./CMPT419726_Paper.out)
 \@outlinefile=\write3
 \openout3 = `CMPT419726_Paper.out'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 49.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 52.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 53.
 
 
-LaTeX Warning: Citation `???' on page 1 undefined on input line 57.
+LaTeX Warning: Citation `???' on page 1 undefined on input line 62.
 
 
-LaTeX Warning: Citation `???' on page 1 undefined on input line 57.
+LaTeX Warning: Citation `???' on page 1 undefined on input line 62.
 
 
-LaTeX Warning: Citation `???' on page 1 undefined on input line 57.
+LaTeX Warning: Citation `???' on page 1 undefined on input line 62.
 
 
-LaTeX Warning: Citation `???' on page 1 undefined on input line 59.
+LaTeX Warning: Citation `???' on page 1 undefined on input line 64.
 
 
-LaTeX Warning: Citation `???' on page 1 undefined on input line 59.
+LaTeX Warning: Citation `???' on page 1 undefined on input line 64.
 
 [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 
-LaTeX Warning: Citation `???' on page 2 undefined on input line 67.
+LaTeX Warning: Citation `???' on page 2 undefined on input line 72.
 
 
-LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 67.
+LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 72.
 
 
-LaTeX Warning: Citation `???' on page 2 undefined on input line 67.
+LaTeX Warning: Citation `???' on page 2 undefined on input line 72.
 
 
-LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 76.
+LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 83.
 
 
-LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 85.
 
 
-LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 80.
+LaTeX Warning: Citation `Rousseau2015' on page 2 undefined on input line 87.
 
 [2]
 
-LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 82.
-
-
-LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 84.
-
-
-LaTeX Warning: Citation `Chen2015' on page 3 undefined on input line 84.
-
-
-LaTeX Warning: Citation `Chen2015' on page 3 undefined on input line 84.
-
-
-LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 86.
-
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 91.
-(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 89.
 
 
 LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 91.
 
 
-LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 93.
+LaTeX Warning: Citation `Chen2015' on page 3 undefined on input line 91.
 
 
-LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 93.
+LaTeX Warning: Citation `Chen2015' on page 3 undefined on input line 91.
 
 
-LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 93.
+LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 93.
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 100.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
+
+
+LaTeX Warning: Citation `Rousseau2015' on page 3 undefined on input line 100.
+
+
+LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 102.
+
+
+LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 102.
+
+
+LaTeX Warning: Citation `Melis2015' on page 3 undefined on input line 102.
 
 
 Underfull \vbox (badness 5475) has occurred while \output is active []
 
  [3]
 
-LaTeX Warning: Citation `Goodfellow2014' on page 4 undefined on input line 99.
-
-[4] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 441--443
-[]\OT1/ptm/m/n/10 Install the Mi-crosoft Save as PDF Of-fice 2007 Add-in from [
-]$\OT1/pcr/m/n/10 http :
- []
+LaTeX Warning: Citation `Goodfellow2014' on page 4 undefined on input line 111.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 441--443
-\OT1/pcr/m/n/10 / / www . microsoft . com / downloads / details . aspx ? displa
-ylang =
- []
+[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[8]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 509.
- [9]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 524.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 527.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 527.
+ [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 465.
+
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 465.
  (./CMPT419726_Paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 527.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 527.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 465.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 465.
 Package rerunfilecheck Info: File `CMPT419726_Paper.out' has not changed.
-(rerunfilecheck)             Checksum: BF47196511F19E0202337F1E443D6BB9;1204.
+(rerunfilecheck)             Checksum: CD18459FDA1A2DD5F69BD0148C4F27D1;384.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 527.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 465.
  ) 
 Here is how much of TeX's memory you used:
- 6136 strings out of 493315
- 87689 string characters out of 6137904
- 183532 words of memory out of 5000000
- 9489 multiletter control sequences out of 15000+600000
- 31165 words of font info for 60 fonts, out of 8000000 for 9000
+ 6067 strings out of 493315
+ 86989 string characters out of 6137904
+ 184247 words of memory out of 5000000
+ 9458 multiletter control sequences out of 15000+600000
+ 17359 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,12n,39p,1375b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,39p,1375b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
@@ -447,13 +439,12 @@ ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
 2013/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist
 /fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
-e1/urw/times/utmbi8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on CMPT419726_Paper.pdf (10 pages, 155956 bytes).
+e1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on CMPT419726_Paper.pdf (6 pages, 119511 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 112 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

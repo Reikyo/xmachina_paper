@@ -5,29 +5,33 @@
 \usepackage{url}
 %\documentstyle[nips14submit_09,times,art10]{article} % For LaTeX 2.09
 
-
 \title{Higgs Machine Learning Challenge \\with Neural Network Adversarial Training}
 
+%\author{
+%
+%\And
+%
+%\AND
+%
+%}
 
-\author{
-Oren Shklarsky\\
-Department of Physics\\
-Simon Fraser University\\
-Burnaby, BC V5A 1S6\\
-\texttt{oshklarsky@sfu.ca}\\
-\And
-Darren Temple\\
-Department of Physics\\
-Simon Fraser University\\
-Burnaby, BC V5A 1S6\\
-\texttt{dtemple@sfu.ca}\\
-\AND
-Morgan Jenkins\\
-Department of Computer Science\\
-Simon Fraser University\\
-Burnaby, BC V5A 1S6\\
-\texttt{mjenkins@sfu.ca}\\
-}
+%\textbf{Oren Shklarsky}\\
+%Department of Physics\\
+%Simon Fraser University\\
+%Burnaby, BC V5A 1S6\\
+%\texttt{oshklarsky@sfu.ca}\\
+
+%\textbf{Darren Temple}\\
+%Department of Physics\\
+%Simon Fraser University\\
+%Burnaby, BC V5A 1S6\\
+%\texttt{dtemple@sfu.ca}\\
+
+%\textbf{Morgan Jenkins}\\
+%Department of Computer Science\\
+%Simon Fraser University\\
+%Burnaby, BC V5A 1S6\\
+%\texttt{mjenkins@sfu.ca}\\
 
 % The \author macro works with any number of authors. There are two commands
 % used to separate the names and addresses of multiple authors: \And and \AND.
@@ -44,12 +48,13 @@ Burnaby, BC V5A 1S6\\
 
 \begin{document}
 
-
 \maketitle
 
 \begin{abstract}
 The Higgs particle was theorized in 1964 and finally discovered in 2012 from the ATLAS and CMS experiments at CERN. This particle is the keystone of the Standard Model of particle physics, and provides the mechanism by which other particles acquire mass. Such discoveries are statistical in nature, and require vast amounts of information from the debris of particle collisions. Sifting and categorizing this data is a continual challenge, and in 2014 CERN and Kaggle invited the public to try their hand at such work, via the Higgs Machine Learning Challenge. A number of top entries, including the winner, used neural networks. An extended approach using the so-called "adversarial training" technique is presented herein.
 \end{abstract}
+
+% **************************************************************************************************************************
 
 \section{Introduction}
 \label{sec:introduction}
@@ -70,6 +75,8 @@ In 2014, CERN scientists collaborated with the Kaggle machine learning organizat
 
 Many technical fields are developing incredibly fast at present, and machine learning is no exception. Even just more than one year on from the Higgs machine learning challenge, new ideas and techniques have become available. This project seeks to explore one such technique that has started to generate a lot of interest of late, namely that of adversarial training, and to apply it to the HMLC.
 
+% **************************************************************************************************************************
+
 \section{Higgs Machine Learning Challenge}
 \label{sec:higgs_machine_learning_challenge}
 
@@ -85,6 +92,8 @@ It is the subtle differences in the ensemble physics variables that we seek to d
 
 Physics details aside, this format of problem is ubiquitous and well known to machine learning, and as such requires no knowledge or understanding of what any of the features actually are. The HMLC dataset is actually a vastly simplified version of the data actually encountered by CERN physicists, who have to carefully reconstruct such high level output from a very low level input. The HMLC dataset was carefully tailored to be simply enough for public use, but still complicated and realistic enough to promote machine learning techniques that could be of actual use \cite{Rousseau2015}. Furthermore, the dataset is in fact the product of a very fine Monte Carlo simulation, of the sort that is actually used for understanding the background in real data. The signal to background ratio in the HMLC dataset is much larger than that in real data, which requires many millions of events in order to provide statistically significant findings.
 
+% **************************************************************************************************************************
+
 \section{HMLC Winner and Initial Impulse}
 \label{sec:hmlc_winner_and_initial_impulse}
 
@@ -94,7 +103,10 @@ The winning entry was based on the neural network approach. The final iteration 
 
 All these elements of the winning entry were included for good reasons. The effects of each were carefully examined over a four month development period, along with many others that were found to be of no benefit and discarded. The speed with which computer science is evolving means that even now, little more than a year after the close of the original Kaggle competition, there are new things to try that were not part of the winning formula. Soon after the start of this current project, the Kaggle winner was contacted for advice based on their past experience and their understanding of the machine learning field in general. They proposed that a so-called generative approach could be applicable to this task, and so initial research was then undertaken in this direction, which became the seed of this project's central concept.
 
+% **************************************************************************************************************************
+
 \section{Adversarial Training}
+\label{sec:adversarial_training}
 
 The generative approach originally suggested by the Kaggle winner regarded Generative Adversarial Networks (GANs), which have been the subject of much interest over the last year or so, following work based on image recognition published in 2014 by Goodfellow \textit{et al.}, based at the University of Montreal \cite{Goodfellow2014}. The idea is to train not only one machine learning system, but two. One system trys to discriminate the classes of a given set of training data, and the other system tries to generate new data examples that can fool the former system into passing them as real. The discriminator \textit{D} is positively reinforced for every example it correctly classifies, and for every fake example it deems as such, with the generator \textit{G} being positively reinforced for every example it makes which passes off as real data. In practice this can be done by setting up \textit{D} and \textit{G} as multilayer perceptrons, using backpropagation and dropout training techniques with piecewise linear units, with the reinforcement criteria set up as a competitive "minimax" game between the two systems, hence the "adversarial" in the GAN acronym.
 
@@ -116,8 +128,6 @@ The above can be mathematically summarized via the following modified cost funct
 \begin{equation*}
 \tilde{J}(\mathbf{\Theta},\mathbf{x},y) = \alpha J(\mathbf{\Theta},\mathbf{x},y) + (1-\alpha)J(\mathbf{\Theta},\mathbf{x} + \epsilon\text{sign}(\nabla_\mathbf{x}J(\mathbf{\Theta},\mathbf{x},y)),y)
 \end{equation*}
-
-\section{Baseline Algorithms}
 
 %In summary, using a simple network with two layers of weights, therefore having a single hidden layer before the output layer, the entire algorithm runs as follows:
 %\begin{itemize}
@@ -146,382 +156,310 @@ The above can be mathematically summarized via the following modified cost funct
 %\end{itemize}
 %\end{itemize}
 
-\subsection{Style}
+% **************************************************************************************************************************
 
-Papers to be submitted to NIPS 2015 must be prepared according to the
-instructions presented here. Papers may be only up to eight pages long,
-including figures. Since 2009 an additional ninth page \textit{containing only
-cited references} is allowed. Papers that exceed nine pages will not be
-reviewed, or in any other way considered for presentation at the conference.
-%This is a strict upper bound. 
+\section{Baseline Algorithms}
+\label{sec:baseline_algorithms}
 
-Please note that this year we have introduced automatic line number generation
-into the style file (for \LaTeXe and Word versions). This is to help reviewers
-refer to specific lines of the paper when they make their comments. Please do
-NOT refer to these line numbers in your paper as they will be removed from the
-style file for the final version of accepted papers.
+In order to observe the effects of the chosen adversarial training approach, and to observe the evolution of the implementation, a number of baselines were created. First was the adaptation of two existing classifier codes, one being driven by a Support Vector Machine (SVM) algorithm and the other by a Kernelized Perceptron (KP) algorithm. The former operates as part of the Python SciKit-Learn framework, and the latter was in fact based on the MatLab code developed as part of SFU CMPT419/726 assignment 2, but translated into Python in order to be run outside of the MatLab environment. This was soon found to be necessary for the sake of running on significant fractions of the given training data, which is large enough to give memory management issues when running on personal machines, as so with the license-restricted MatLab suite. Given the relative simplicity of the HMLC dataset, there was nothing to suggest that these relatively simple SVM and KP approaches would be invalid, and indeed they performed as desired.
 
-The margins in 2015 are the same as since 2007, which allow for $\approx 15\%$
-more words in the paper compared to earlier years. We are also again using 
-double-blind reviewing. Both of these require the use of new style files.
+!!! SVM details !!!
 
-Authors are required to use the NIPS \LaTeX{} style files obtainable at the
-NIPS website as indicated below. Please make sure you use the current files and
-not previous versions. Tweaking the style files may be grounds for rejection.
+!!! KP details !!!
 
-%% \subsection{Double-blind reviewing}
+% **************************************************************************************************************************
 
-%% This year we are doing double-blind reviewing: the reviewers will not know 
-%% who the authors of the paper are. For submission, the NIPS style file will 
-%% automatically anonymize the author list at the beginning of the paper.
+\section{Main Algorithms}
+\label{sec:main_algorithms}
 
-%% Please write your paper in such a way to preserve anonymity. Refer to
-%% previous work by the author(s) in the third person, rather than first
-%% person. Do not provide Web links to supporting material at an identifiable
-%% web site.
+With the intention of developing a neural network with adversarial training in mind, a logical first step was to modify an existing neural network already in hand. Once again the SFU CMPT419/726 assignments came in useful here, with the third and final assignment involving the completion of a simple MatLab neural network for handwritten digit recognition. This code was adapted for use with the HMLC dataset, and given some further refinements such as optional training data normalization. Satisfied that the code worked as intended in this state, the adversarial components were then introduced. These additions sit entirely within the inner calculation loop, following the existing error backpropagation code lines but before the weight update step, as described in \S\ref{sec:adversarial_training}. By simply setting the perturbation size $\epsilon$ to zero, the adversarial calculations are rendered null and void, and the code performs the same as prior to their inclusion, as should be so.
 
-%%\subsection{Electronic submission}
-%%
-%% \textbf{THE SUBMISSION DEADLINE IS June 5, 2015. SUBMISSIONS MUST BE LOGGED BY
-%% 23:00, June 5, 2015, UNIVERSAL TIME}
+Due to time restrictions, this MatLab code was unfortunately not translated into a more general language such as Python, which, as mentioned in \S\ref{sec:baseline_algorithms}, would have allowed ease of use of a greater fraction of training data. However, despite the input limitations, the MatLab neural network still performed rather well.
 
-%% You must enter your submission in the electronic submission form available at
-%% the NIPS website listed above. You will be asked to enter paper title, name of
-%% all authors, keyword(s), and data about the contact
-%% author (name, full address, telephone, fax, and email). You will need to
-%% upload an electronic (postscript or pdf) version of your paper.
+!!! MatLab NN details !!!
 
-%% You can upload more than one version of your paper, until the
-%% submission deadline. We strongly recommended uploading your paper in
-%% advance of the deadline, so you can avoid last-minute server congestion.
-%%
-%% Note that your submission is only valid if you get an e-mail
-%% confirmation from the server. If you do not get such an e-mail, please
-%% try uploading again. 
+The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end, following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for large-scale data handling and machine learning. It is a competant package which is well supported and, importantly, well documented, and was a natural choice following the progression of work up to this point. An example Theano neural network code was taken as a basis and adapted for the HMLC dataset ...
+
+!!! Theano NN details !!!
+
+% **************************************************************************************************************************
+
+\section{Conclusion}
+\label{sec:conclusion}
 
 
-\subsection{Retrieval of style files}
 
-The style files for NIPS and other conference information are available on the World Wide Web at
-\begin{center}
-   \url{http://www.nips.cc/}
-\end{center}
-The file \verb+nips2015.pdf+ contains these 
-instructions and illustrates the
-various formatting requirements your NIPS paper must satisfy. \LaTeX{}
-users can choose between two style files:
-\verb+nips15submit_09.sty+ (to be used with \LaTeX{} version 2.09) and
-\verb+nips15submit_e.sty+ (to be used with \LaTeX{}2e). The file
-\verb+nips2015.tex+ may be used as a ``shell'' for writing your paper. All you
-have to do is replace the author, title, abstract, and text of the paper with
-your own. The file
-\verb+nips2015.rtf+ is provided as a shell for MS Word users.
+% **************************************************************************************************************************
 
-The formatting instructions contained in these style files are summarized in
-sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
-
-%% \subsection{Keywords for paper submission}
-%% Your NIPS paper can be submitted with any of the following keywords (more than one keyword is possible for each paper):
-
-%% \begin{verbatim}
-%% Bioinformatics
-%% Biological Vision
-%% Brain Imaging and Brain Computer Interfacing
-%% Clustering
-%% Cognitive Science
-%% Control and Reinforcement Learning
-%% Dimensionality Reduction and Manifolds
-%% Feature Selection
-%% Gaussian Processes
-%% Graphical Models
-%% Hardware Technologies
-%% Kernels
-%% Learning Theory
-%% Machine Vision
-%% Margins and Boosting
-%% Neural Networks
-%% Neuroscience
-%% Other Algorithms and Architectures
-%% Other Applications
-%% Semi-supervised Learning
-%% Speech and Signal Processing
-%% Text and Language Applications
-
-%% \end{verbatim}
-
-\section{General formatting instructions}
-\label{gen_inst}
-
-The text must be confined within a rectangle 5.5~inches (33~picas) wide and
-9~inches (54~picas) long. The left margin is 1.5~inch (9~picas).
-Use 10~point type with a vertical spacing of 11~points. Times New Roman is the
-preferred typeface throughout. Paragraphs are separated by 1/2~line space,
-with no indentation.
-
-Paper title is 17~point, initial caps/lower case, bold, centered between
-2~horizontal rules. Top rule is 4~points thick and bottom rule is 1~point
-thick. Allow 1/4~inch space above and below title to rules. All pages should
-start at 1~inch (6~picas) from the top of the page.
-
-%The version of the paper submitted for review should have ``Anonymous Author(s)'' as the author of the paper.
-
-For the final version, authors' names are
-set in boldface, and each name is centered above the corresponding
-address. The lead author's name is to be listed first (left-most), and
-the co-authors' names (if different address) are set to follow. If
-there is only one co-author, list both author and co-author side by side.
-
-Please pay special attention to the instructions in section \ref{others}
-regarding figures, tables, acknowledgments, and references.
-
-\section{Headings: first level}
-\label{headings}
-
-First level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 12. One line space before the first level
-heading and 1/2~line space after the first level heading.
-
-\subsection{Headings: second level}
-
-Second level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the second level
-heading and 1/2~line space after the second level heading.
-
-\subsubsection{Headings: third level}
-
-Third level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the third level
-heading and 1/2~line space after the third level heading.
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-These instructions apply to everyone, regardless of the formatter being used.
-
-\subsection{Citations within the text}
-
-Citations within the text should be numbered consecutively. The corresponding
-number is to appear enclosed in square brackets, such as [1] or [2]-[5]. The
-corresponding references are to be listed in the same order at the end of the
-paper, in the \textbf{References} section. (Note: the standard
-\textsc{Bib\TeX} style \texttt{unsrt} produces this.) As to the format of the
-references themselves, any style is acceptable as long as it is used
-consistently.
-
-As submission is double blind, refer to your own published work in the 
-third person. That is, use ``In the previous work of Jones et al.\ [4]'',
-not ``In our previous work [4]''. If you cite your other papers that
-are not widely available (e.g.\ a journal paper under review), use
-anonymous author names in the citation, e.g.\ an author of the
-form ``A.\ Anonymous''. 
-
-
-\subsection{Footnotes}
-
-Indicate footnotes with a number\footnote{Sample of the first footnote} in the
-text. Place the footnotes at the bottom of the page on which they appear.
-Precede the footnote with a horizontal rule of 2~inches
-(12~picas).\footnote{Sample of the second footnote}
-
-\subsection{Figures}
-
-All artwork must be neat, clean, and legible. Lines should be dark
-enough for purposes of reproduction; art work should not be
-hand-drawn. The figure number and caption always appear after the
-figure. Place one line space before the figure caption, and one line
-space after the figure. The figure caption is lower case (except for
-first word and proper nouns); figures are numbered consecutively.
-
-Make sure the figure caption does not get separated from the figure.
-Leave sufficient space to avoid splitting the figure and figure caption.
-
-You may use color figures. 
-However, it is best for the
-figure captions and the paper body to make sense if the paper is printed
-either in black/white or in color.
-\begin{figure}[h]
-\begin{center}
-%\framebox[4.0in]{$\;$}
-\fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-\end{center}
-\caption{Sample figure caption.}
-\end{figure}
-
-\subsection{Tables}
-
-All tables must be centered, neat, clean and legible. Do not use hand-drawn
-tables. The table number and title always appear before the table. See
-Table~\ref{sample-table}.
-
-Place one line space before the table title, one line space after the table
-title, and one line space after the table. The table title must be lower case
-(except for first word and proper nouns); tables are numbered consecutively.
-
-\begin{table}[t]
-\caption{Sample table title}
-\label{sample-table}
-\begin{center}
-\begin{tabular}{ll}
-\multicolumn{1}{c}{\bf PART}  &\multicolumn{1}{c}{\bf DESCRIPTION}
-\\ \hline \\
-Dendrite         &Input terminal \\
-Axon             &Output terminal \\
-Soma             &Cell body (contains cell nucleus) \\
-\end{tabular}
-\end{center}
-\end{table}
-
-\section{Final instructions}
-Do not change any aspects of the formatting parameters in the style files.
-In particular, do not modify the width or length of the rectangle the text
-should fit into, and do not change font sizes (except perhaps in the
-\textbf{References} section; see below). Please note that pages should be
-numbered.
-
-\section{Preparing PostScript or PDF files}
-
-Please prepare PostScript or PDF files with paper size ``US Letter'', and
-not, for example, ``A4''. The -t
-letter option on dvips will produce US Letter files.
-
-Fonts were the main cause of problems in the past years. Your PDF file must
-only contain Type 1 or Embedded TrueType fonts. Here are a few instructions
-to achieve this.
+\section*{Contributions}
+\label{sec:contributions}
 
 \begin{itemize}
-
-\item You can check which fonts a PDF files uses.  In Acrobat Reader,
-select the menu Files$>$Document Properties$>$Fonts and select Show All Fonts. You can
-also use the program \verb+pdffonts+ which comes with \verb+xpdf+ and is
-available out-of-the-box on most Linux machines.
-
-\item The IEEE has recommendations for generating PDF files whose fonts
-are also acceptable for NIPS. Please see
-\url{http://www.emfield.org/icuwb2010/downloads/IEEE-PDF-SpecV32.pdf}
-
-\item LaTeX users:
-
-\begin{itemize}
-
-\item Consider directly generating PDF files using \verb+pdflatex+
-(especially if you are a MiKTeX user). 
-PDF figures must be substituted for EPS figures, however.
-
-\item Otherwise, please generate your PostScript and PDF files with the following commands:
-\begin{verbatim} 
-dvips mypaper.dvi -t letter -Ppdf -G0 -o mypaper.ps
-ps2pdf mypaper.ps mypaper.pdf
-\end{verbatim}
-
-Check that the PDF files only contains Type 1 fonts. 
-%For the final version, please send us both the Postscript file and
-%the PDF file. 
-
-\item xfig "patterned" shapes are implemented with 
-bitmap fonts.  Use "solid" shapes instead. 
-\item The \verb+\bbold+ package almost always uses bitmap
-fonts.  You can try the equivalent AMS Fonts with command
-\begin{verbatim}
-\usepackage[psamsfonts]{amssymb}
-\end{verbatim}
- or use the following workaround for reals, natural and complex: 
-\begin{verbatim}
-\newcommand{\RR}{I\!\!R} %real numbers
-\newcommand{\Nat}{I\!\!N} %natural numbers 
-\newcommand{\CC}{I\!\!\!\!C} %complex numbers
-\end{verbatim}
-
-\item Sometimes the problematic fonts are used in figures
-included in LaTeX files. The ghostscript program \verb+eps2eps+ is the simplest
-way to clean such figures. For black and white figures, slightly better
-results can be achieved with program \verb+potrace+.
-\end{itemize}
-\item MSWord and Windows users (via PDF file):
-\begin{itemize}
-\item Install the Microsoft Save as PDF Office 2007 Add-in from
-\url{http://www.microsoft.com/downloads/details.aspx?displaylang=en\&familyid=4d951911-3e7e-4ae6-b059-a2e79ed87041}
-\item Select ``Save or Publish to PDF'' from the Office or File menu
-\end{itemize}
-\item MSWord and Mac OS X users (via PDF file):
-\begin{itemize}
-\item From the print menu, click the PDF drop-down box, and select ``Save
-as PDF...''
-\end{itemize}
-\item MSWord and Windows users (via PS file):
-\begin{itemize}
-\item To create a new printer
-on your computer, install the AdobePS printer driver and the Adobe Distiller PPD file from
-\url{http://www.adobe.com/support/downloads/detail.jsp?ftpID=204} {\it Note:} You must reboot your PC after installing the
-AdobePS driver for it to take effect.
-\item To produce the ps file, select ``Print'' from the MS app, choose
-the installed AdobePS printer, click on ``Properties'', click on ``Advanced.''
-\item Set ``TrueType Font'' to be ``Download as Softfont''
-\item Open the ``PostScript Options'' folder
-\item Select ``PostScript Output Option'' to be ``Optimize for Portability''
-\item Select ``TrueType Font Download Option'' to be ``Outline''
-\item Select ``Send PostScript Error Handler'' to be ``No''
-\item Click ``OK'' three times, print your file.
-\item Now, use Adobe Acrobat Distiller or ps2pdf to create a PDF file from
-the PS file. In Acrobat, check the option ``Embed all fonts'' if
-applicable.
+\item All: Survey of available tools; general research; poster editing; paper editing
+\item Darren Temple: MatLab/Python kernelized perceptron adaptation; MatLab neural network adaptation; Initial adversarial training implementation; Communication with external contacts
+\item Oren Shklarsky: Python SVM adaptation; Python/Theano neural network adaptation; Advanced adversarial training implementation
+\item Morgan Jenkins: Interpretation of research material; Development of adversarial training algorithm; Assistance with Python/Theano neural network
+\item Lola the dog: Running; Jumping; Licking heads; General distractions
 \end{itemize}
 
-\end{itemize}
-If your file contains Type 3 fonts or non embedded TrueType fonts, we will
-ask you to fix it. 
+% **************************************************************************************************************************
 
-\subsection{Margins in LaTeX}
- 
-Most of the margin problems come from figures positioned by hand using
-\verb+\special+ or other commands. We suggest using the command
-\verb+\includegraphics+
-from the graphicx package. Always specify the figure width as a multiple of
-the line width as in the example below using .eps graphics
-\begin{verbatim}
-   \usepackage[dvips]{graphicx} ... 
-   \includegraphics[width=0.8\linewidth]{myfile.eps} 
-\end{verbatim}
-or % Apr 2009 addition
-\begin{verbatim}
-   \usepackage[pdftex]{graphicx} ... 
-   \includegraphics[width=0.8\linewidth]{myfile.pdf} 
-\end{verbatim}
-for .pdf graphics. 
-See section 4.4 in the graphics bundle documentation (\url{http://www.ctan.org/tex-archive/macros/latex/required/graphics/grfguide.ps}) 
- 
-A number of width problems arise when LaTeX cannot properly hyphenate a
-line. Please give LaTeX hyphenation hints using the \verb+\-+ command.
+\section*{References}
+\label{sec:references}
 
 
-\subsubsection*{Acknowledgments}
 
-Use unnumbered third level headings for the acknowledgments. All
-acknowledgments go at the end of the paper. Do not include 
-acknowledgments in the anonymized submission, only in the 
-final paper. 
+% **************************************************************************************************************************
 
-\subsubsection*{References}
 
-References follow the acknowledgments. Use unnumbered third level heading for
-the references. Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to `small' (9-point) 
-when listing the references. {\bf Remember that this year you can use
-a ninth page as long as it contains \emph{only} cited references.}
-
-\small{
-[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
-for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
-and T.K. Leen (eds.), {\it Advances in Neural Information Processing
-Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
-
-[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
-Realistic Neural Models with the GEneral NEural SImulation System.}
-New York: TELOS/Springer-Verlag.
-
-[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
-and recall at excitatory recurrent synapses and cholinergic modulation
-in rat hippocampal region CA3. {\it Journal of Neuroscience}
-{\bf 15}(7):5249-5262.
-}
+%\section{Headings: first level}
+%\label{headings}
+%
+%First level headings are lower case (except for first word and proper nouns),
+%flush left, bold and in point size 12. One line space before the first level
+%heading and 1/2~line space after the first level heading.
+%
+%\subsection{Headings: second level}
+%
+%Second level headings are lower case (except for first word and proper nouns),
+%flush left, bold and in point size 10. One line space before the second level
+%heading and 1/2~line space after the second level heading.
+%
+%\subsubsection{Headings: third level}
+%
+%Third level headings are lower case (except for first word and proper nouns),
+%flush left, bold and in point size 10. One line space before the third level
+%heading and 1/2~line space after the third level heading.
+%
+%\section{Citations, figures, tables, references}
+%\label{others}
+%
+%These instructions apply to everyone, regardless of the formatter being used.
+%
+%\subsection{Citations within the text}
+%
+%Citations within the text should be numbered consecutively. The corresponding
+%number is to appear enclosed in square brackets, such as [1] or [2]-[5]. The
+%corresponding references are to be listed in the same order at the end of the
+%paper, in the \textbf{References} section. (Note: the standard
+%\textsc{Bib\TeX} style \texttt{unsrt} produces this.) As to the format of the
+%references themselves, any style is acceptable as long as it is used
+%consistently.
+%
+%As submission is double blind, refer to your own published work in the 
+%third person. That is, use ``In the previous work of Jones et al.\ [4]'',
+%not ``In our previous work [4]''. If you cite your other papers that
+%are not widely available (e.g.\ a journal paper under review), use
+%anonymous author names in the citation, e.g.\ an author of the
+%form ``A.\ Anonymous''. 
+%
+%
+%\subsection{Footnotes}
+%
+%Indicate footnotes with a number\footnote{Sample of the first footnote} in the
+%text. Place the footnotes at the bottom of the page on which they appear.
+%Precede the footnote with a horizontal rule of 2~inches
+%(12~picas).\footnote{Sample of the second footnote}
+%
+%\subsection{Figures}
+%
+%All artwork must be neat, clean, and legible. Lines should be dark
+%enough for purposes of reproduction; art work should not be
+%hand-drawn. The figure number and caption always appear after the
+%figure. Place one line space before the figure caption, and one line
+%space after the figure. The figure caption is lower case (except for
+%first word and proper nouns); figures are numbered consecutively.
+%
+%Make sure the figure caption does not get separated from the figure.
+%Leave sufficient space to avoid splitting the figure and figure caption.
+%
+%You may use color figures. 
+%However, it is best for the
+%figure captions and the paper body to make sense if the paper is printed
+%either in black/white or in color.
+%\begin{figure}[h]
+%\begin{center}
+%%\framebox[4.0in]{$\;$}
+%\fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%\end{center}
+%\caption{Sample figure caption.}
+%\end{figure}
+%
+%\subsection{Tables}
+%
+%All tables must be centered, neat, clean and legible. Do not use hand-drawn
+%tables. The table number and title always appear before the table. See
+%Table~\ref{sample-table}.
+%
+%Place one line space before the table title, one line space after the table
+%title, and one line space after the table. The table title must be lower case
+%(except for first word and proper nouns); tables are numbered consecutively.
+%
+%\begin{table}[t]
+%\caption{Sample table title}
+%\label{sample-table}
+%\begin{center}
+%\begin{tabular}{ll}
+%\multicolumn{1}{c}{\bf PART}  &\multicolumn{1}{c}{\bf DESCRIPTION}
+%\\ \hline \\
+%Dendrite         &Input terminal \\
+%Axon             &Output terminal \\
+%Soma             &Cell body (contains cell nucleus) \\
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%\section{Final instructions}
+%Do not change any aspects of the formatting parameters in the style files.
+%In particular, do not modify the width or length of the rectangle the text
+%should fit into, and do not change font sizes (except perhaps in the
+%\textbf{References} section; see below). Please note that pages should be
+%numbered.
+%
+%\section{Preparing PostScript or PDF files}
+%
+%Please prepare PostScript or PDF files with paper size ``US Letter'', and
+%not, for example, ``A4''. The -t
+%letter option on dvips will produce US Letter files.
+%
+%Fonts were the main cause of problems in the past years. Your PDF file must
+%only contain Type 1 or Embedded TrueType fonts. Here are a few instructions
+%to achieve this.
+%
+%\begin{itemize}
+%
+%\item You can check which fonts a PDF files uses.  In Acrobat Reader,
+%select the menu Files$>$Document Properties$>$Fonts and select Show All Fonts. You can
+%also use the program \verb+pdffonts+ which comes with \verb+xpdf+ and is
+%available out-of-the-box on most Linux machines.
+%
+%\item The IEEE has recommendations for generating PDF files whose fonts
+%are also acceptable for NIPS. Please see
+%\url{http://www.emfield.org/icuwb2010/downloads/IEEE-PDF-SpecV32.pdf}
+%
+%\item LaTeX users:
+%
+%\begin{itemize}
+%
+%\item Consider directly generating PDF files using \verb+pdflatex+
+%(especially if you are a MiKTeX user). 
+%PDF figures must be substituted for EPS figures, however.
+%
+%\item Otherwise, please generate your PostScript and PDF files with the following commands:
+%\begin{verbatim} 
+%dvips mypaper.dvi -t letter -Ppdf -G0 -o mypaper.ps
+%ps2pdf mypaper.ps mypaper.pdf
+%\end{verbatim}
+%
+%Check that the PDF files only contains Type 1 fonts. 
+%%For the final version, please send us both the Postscript file and
+%%the PDF file. 
+%
+%\item xfig "patterned" shapes are implemented with 
+%bitmap fonts.  Use "solid" shapes instead. 
+%\item The \verb+\bbold+ package almost always uses bitmap
+%fonts.  You can try the equivalent AMS Fonts with command
+%\begin{verbatim}
+%\usepackage[psamsfonts]{amssymb}
+%\end{verbatim}
+% or use the following workaround for reals, natural and complex: 
+%\begin{verbatim}
+%\newcommand{\RR}{I\!\!R} %real numbers
+%\newcommand{\Nat}{I\!\!N} %natural numbers 
+%\newcommand{\CC}{I\!\!\!\!C} %complex numbers
+%\end{verbatim}
+%
+%\item Sometimes the problematic fonts are used in figures
+%included in LaTeX files. The ghostscript program \verb+eps2eps+ is the simplest
+%way to clean such figures. For black and white figures, slightly better
+%results can be achieved with program \verb+potrace+.
+%\end{itemize}
+%\item MSWord and Windows users (via PDF file):
+%\begin{itemize}
+%\item Install the Microsoft Save as PDF Office 2007 Add-in from
+%\url{http://www.microsoft.com/downloads/details.aspx?displaylang=en\&familyid=4d951911-3e7e-4ae6-b059-a2e79ed87041}
+%\item Select ``Save or Publish to PDF'' from the Office or File menu
+%\end{itemize}
+%\item MSWord and Mac OS X users (via PDF file):
+%\begin{itemize}
+%\item From the print menu, click the PDF drop-down box, and select ``Save
+%as PDF...''
+%\end{itemize}
+%\item MSWord and Windows users (via PS file):
+%\begin{itemize}
+%\item To create a new printer
+%on your computer, install the AdobePS printer driver and the Adobe Distiller PPD file from
+%\url{http://www.adobe.com/support/downloads/detail.jsp?ftpID=204} {\it Note:} You must reboot your PC after installing the
+%AdobePS driver for it to take effect.
+%\item To produce the ps file, select ``Print'' from the MS app, choose
+%the installed AdobePS printer, click on ``Properties'', click on ``Advanced.''
+%\item Set ``TrueType Font'' to be ``Download as Softfont''
+%\item Open the ``PostScript Options'' folder
+%\item Select ``PostScript Output Option'' to be ``Optimize for Portability''
+%\item Select ``TrueType Font Download Option'' to be ``Outline''
+%\item Select ``Send PostScript Error Handler'' to be ``No''
+%\item Click ``OK'' three times, print your file.
+%\item Now, use Adobe Acrobat Distiller or ps2pdf to create a PDF file from
+%the PS file. In Acrobat, check the option ``Embed all fonts'' if
+%applicable.
+%\end{itemize}
+%
+%\end{itemize}
+%If your file contains Type 3 fonts or non embedded TrueType fonts, we will
+%ask you to fix it. 
+%
+%\subsection{Margins in LaTeX}
+% 
+%Most of the margin problems come from figures positioned by hand using
+%\verb+\special+ or other commands. We suggest using the command
+%\verb+\includegraphics+
+%from the graphicx package. Always specify the figure width as a multiple of
+%the line width as in the example below using .eps graphics
+%\begin{verbatim}
+%   \usepackage[dvips]{graphicx} ... 
+%   \includegraphics[width=0.8\linewidth]{myfile.eps} 
+%\end{verbatim}
+%or % Apr 2009 addition
+%\begin{verbatim}
+%   \usepackage[pdftex]{graphicx} ... 
+%   \includegraphics[width=0.8\linewidth]{myfile.pdf} 
+%\end{verbatim}
+%for .pdf graphics. 
+%See section 4.4 in the graphics bundle documentation (\url{http://www.ctan.org/tex-archive/macros/latex/required/graphics/grfguide.ps}) 
+% 
+%A number of width problems arise when LaTeX cannot properly hyphenate a
+%line. Please give LaTeX hyphenation hints using the \verb+\-+ command.
+%
+%
+%\subsubsection*{Acknowledgments}
+%
+%Use unnumbered third level headings for the acknowledgments. All
+%acknowledgments go at the end of the paper. Do not include 
+%acknowledgments in the anonymized submission, only in the 
+%final paper. 
+%
+%\subsubsection*{References}
+%
+%References follow the acknowledgments. Use unnumbered third level heading for
+%the references. Any choice of citation style is acceptable as long as you are
+%consistent. It is permissible to reduce the font size to `small' (9-point) 
+%when listing the references. {\bf Remember that this year you can use
+%a ninth page as long as it contains \emph{only} cited references.}
+%
+%\small{
+%[1] Alexander, J.A. \& Mozer, M.C. (1995) Template-based algorithms
+%for connectionist rule extraction. In G. Tesauro, D. S. Touretzky
+%and T.K. Leen (eds.), {\it Advances in Neural Information Processing
+%Systems 7}, pp. 609-616. Cambridge, MA: MIT Press.
+%
+%[2] Bower, J.M. \& Beeman, D. (1995) {\it The Book of GENESIS: Exploring
+%Realistic Neural Models with the GEneral NEural SImulation System.}
+%New York: TELOS/Springer-Verlag.
+%
+%[3] Hasselmo, M.E., Schnell, E. \& Barkai, E. (1995) Dynamics of learning
+%and recall at excitatory recurrent synapses and cholinergic modulation
+%in rat hippocampal region CA3. {\it Journal of Neuroscience}
+%{\bf 15}(7):5249-5262.
+%}
 
 \end{document}

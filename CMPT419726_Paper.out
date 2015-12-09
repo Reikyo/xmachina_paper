@@ -3,17 +3,5 @@
 \BOOKMARK [1][-]{section.3}{HMLC Winner and Initial Impulse}{}% 3
 \BOOKMARK [1][-]{section.4}{Adversarial Training}{}% 4
 \BOOKMARK [1][-]{section.5}{Baseline Algorithms}{}% 5
-\BOOKMARK [2][-]{subsection.5.1}{Style}{section.5}% 6
-\BOOKMARK [2][-]{subsection.5.2}{Retrieval of style files}{section.5}% 7
-\BOOKMARK [1][-]{section.6}{General formatting instructions}{}% 8
-\BOOKMARK [1][-]{section.7}{Headings: first level}{}% 9
-\BOOKMARK [2][-]{subsection.7.1}{Headings: second level}{section.7}% 10
-\BOOKMARK [3][-]{subsubsection.7.1.1}{Headings: third level}{subsection.7.1}% 11
-\BOOKMARK [1][-]{section.8}{Citations, figures, tables, references}{}% 12
-\BOOKMARK [2][-]{subsection.8.1}{Citations within the text}{section.8}% 13
-\BOOKMARK [2][-]{subsection.8.2}{Footnotes}{section.8}% 14
-\BOOKMARK [2][-]{subsection.8.3}{Figures}{section.8}% 15
-\BOOKMARK [2][-]{subsection.8.4}{Tables}{section.8}% 16
-\BOOKMARK [1][-]{section.9}{Final instructions}{}% 17
-\BOOKMARK [1][-]{section.10}{Preparing PostScript or PDF files}{}% 18
-\BOOKMARK [2][-]{subsection.10.1}{Margins in LaTeX}{section.10}% 19
+\BOOKMARK [1][-]{section.6}{Main Algorithms}{}% 6
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 7
