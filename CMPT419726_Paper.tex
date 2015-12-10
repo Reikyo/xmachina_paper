@@ -197,15 +197,15 @@ Due to time restrictions, this MatLab code was unfortunately not translated into
 !!! MatLab NN details !!!
 
 The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end, following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for performing tensor computations efficiently by treating them symbollicaly. As such, it is very useful in machine learning applications. It is a competent package which is well supported and, importantly, well documented, and was a natural choice following the progression of work up to this point. Further, as the modification to the cost function $J$ required access to several gradients of the cost function, Theano's symbolic integration allowed for quick experimentation with many different cost functions. An example Theano neural network code was taken as a basis and adapted for the HMLC dataset. Specifically, a Multilayer Perceptron was written using Theano to classify the HMLC dataset. The network consisted of 30 node input layer, normalized, a hidden layer with 600 nodes and tanh as an activation function, and an output layer with two nodes, using softmax to read the output. The network was trained on a 2013 Macbook Pro 
-	with 2 cores and 8GB of ram, for 100 epochs. As with the baseline algorithms, the data was split into 225000 training samples and 25000 validation samples.Two cost functions were used in testing. The results are summarized below
+	with 2 cores and 8GB of ram, for 100 epochs. As with the baseline algorithms, the data was split into 225000 training samples and 25000 validation samples.Two cost functions were used in testing. The results are summarized below.
 \begin{center}
 	\begin{tabular}{|l|c|c|}
 	  \hline
 	  cost&non-adversarial&adversarial \\
 	  \hline
-	  Negative log likelihood& & \\
+	  Negative log likelihood&$73.368$&$74.552$\\
 	  \hline
-	  Cross entropy& & \\
+	  Cross entropy&$65.5$&$65.5$ \\
 	  \hline
 	\end{tabular}
 \end{center}
