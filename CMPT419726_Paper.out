@@ -3,5 +3,7 @@
 \BOOKMARK [1][-]{section.3}{HMLC Winner and Initial Impulse}{}% 3
 \BOOKMARK [1][-]{section.4}{Adversarial Training}{}% 4
 \BOOKMARK [1][-]{section.5}{Baseline Algorithms}{}% 5
-\BOOKMARK [1][-]{section.6}{Main Algorithms}{}% 6
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 7
+\BOOKMARK [2][-]{subsection.5.1}{SVM}{section.5}% 6
+\BOOKMARK [2][-]{subsection.5.2}{Kernelized Perceptron}{section.5}% 7
+\BOOKMARK [1][-]{section.6}{Main Algorithms}{}% 8
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 9
