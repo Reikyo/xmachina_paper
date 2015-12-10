@@ -163,11 +163,29 @@ The above can be mathematically summarized via the following modified cost funct
 
 In order to observe the effects of the chosen adversarial training approach, and to observe the evolution of the implementation, a number of baselines were created. First was the adaptation of two existing classifier codes, one being driven by a Support Vector Machine (SVM) algorithm and the other by a Kernelized Perceptron (KP) algorithm. The former operates as part of the Python SciKit-Learn framework, and the latter was in fact based on the MatLab code developed as part of SFU CMPT419/726 assignment 2, but translated into Python in order to be run outside of the MatLab environment. This was soon found to be necessary for the sake of running on significant fractions of the given training data, which is large enough to give memory management issues when running on personal machines, as so with the license-restricted MatLab suite. Given the relative simplicity of the HMLC dataset, there was nothing to suggest that these relatively simple SVM and KP approaches would be invalid, and indeed they performed as desired.
 
-!!! SVM details !!!
+\subsection{SVM}
+As SciKit-Learn has a mature SVM implementation in sklearn.svm.SVC, a natural choice was to use in the HMLC dataset. The SVC class supports several kernel functions by default, each with its own set of parameters. To find optimal parameters, a 5 fold cross-validation was performed using sklearn.grid\_search. To facilitate this parameter tuning, grid search was run on a subset of the entire dataset, of size 50,000. The following table lists the kernels and parameters tried during the grid search. Note that $\gamma$ and $C$ are ranges. For $C$ the range is exponents, while the gamma values are spaced evenly on a log scale, starting and ending with the values in the table.
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+  \hline
+  kernel & C & $\gamma$ & coef0 & degree\\
+  \hline
+  radial-basis function&$10-100,000$&$0.00001-100,000$& N/A&N/A\\
+  \hline
+  sigmoid& $10-100,000$&$0.001-10,000$&$0,1$& N/A\\
+  \hline
+  polynomial &$10-100,000$&$0.001-10,000$&0,1&$1,2,3$\\
+  \hline
+\end{tabular}
+\end{center}
+
+Having chosen an optimal kernel and parameters, the entire training set of 250,000 samples was split randomly into 225,000 training samples, and 25,000 validation samples. The SVM was trained using a radial-basis function kernel, with parameters $C=1000,\gamma=0.00024883895413685354$. The overall score obtained was $73.744$ percent. For the signal class, precision was $83$ percent, and recall was $30$ percent. For the background class, precision was $72$ percent, while recall was $97$ percent.
+
+
 
 !!! KP details !!!
 
-% **************************************************************************************************************************
 
 \section{Main Algorithms}
 \label{sec:main_algorithms}
