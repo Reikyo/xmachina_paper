@@ -194,9 +194,9 @@ It can be seen that there is similar performance for both the training and testi
 \begin                  {figure}
 \begin                  {center}
 \includegraphics        [scale = 0.6]
-                        {kp.pdf}
-\caption                {\small\textit{Left: Training data; Right: Testing data\\Blue: Un-normalized; Green: Normalized}}
-\label                  {fig:kp}
+                        {fig1.pdf}
+\caption                {\small\textit{Kernelized perceptron performance\\Left: Training data; Right: Testing data\\Blue: Un-normalized; Green: Normalized}}
+\label                  {fig:fig1}
 \end                    {center}
 \end                    {figure}
 
@@ -210,6 +210,15 @@ With the intention of developing a neural network with adversarial training in m
 Due to time restrictions, this MatLab code was unfortunately not translated into a more general language such as Python, which, as mentioned in \S\ref{sec:baseline_algorithms}, would have allowed ease of use of a greater fraction of training data. However, despite the input limitations, the MatLab neural network still performed rather well.
 
 !!! MatLab NN details !!!
+
+\begin                  {figure}
+\begin                  {center}
+\includegraphics        [scale = 0.6]
+                        {fig2.pdf}
+\caption                {\small\textit{MatLab neural network performance\\Left: Training data; Right: Testing data\\Blue: Un-normalized; Green: Normalized}}
+\label                  {fig:fig2}
+\end                    {center}
+\end                    {figure}
 
 The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end, following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for performing tensor computations efficiently by treating them symbollicaly. As such, it is very useful in machine learning applications. It is a competent package which is well supported and, importantly, well documented, and was a natural choice following the progression of work up to this point. Further, as the modification to the cost function $J$ required access to several gradients of the cost function, Theano's symbolic integration allowed for quick experimentation with many different cost functions. An example Theano neural network code was taken as a basis and adapted for the HMLC dataset. Specifically, a Multilayer Perceptron was written using Theano to classify the HMLC dataset. The network consisted of 30 node input layer, normalized, a hidden layer with 600 nodes and tanh as an activation function, and an output layer with two nodes, using softmax to read the output. The network was trained on a 2013 Macbook Pro with 2 cores and 8GB of ram, for 100 epochs. As with the baseline algorithms, the data was split into 225,000 training samples and 25,000 validation samples.Two cost functions were used in testing. The results are summarized below:
 \begin{center}
