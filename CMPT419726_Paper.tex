@@ -1,8 +1,12 @@
 \documentclass{article} % For LaTeX2e
-\usepackage{amsmath}
-\usepackage{nips15submit_e,times}
-\usepackage{hyperref}
-\usepackage{url}
+\usepackage             {amsmath}
+\usepackage             [center]
+                        {caption}
+\usepackage               {subcaption}
+\usepackage             {nips15submit_e,times}
+\usepackage             {graphicx}
+\usepackage             {hyperref}
+\usepackage             {url}
 %\documentstyle[nips14submit_09,times,art10]{article} % For LaTeX 2.09
 
 \title{Higgs Machine Learning Challenge \\with Neural Network Adversarial Training}
@@ -183,10 +187,18 @@ As SciKit-Learn has a mature SVM implementation in sklearn.svm.SVC, it was a cle
 Having chosen an optimal kernel and parameters, the entire training set of 250,000 examples was randomly split into 225,000 training samples, and 25,000 validation samples. The SVM was trained using a radial-basis function (RBF) kernel, with parameters $C=1,000$ and $\gamma=0.00024883895413685354$. The overall score obtained was $73.744$\%. For the signal class, precision was $83$ percent, and recall was $30$ percent. For the background class, precision was $72$\%, while recall was $97$\%.
 
 \subsection{Kernelized Perceptron}
-The kernelized perceptron algorithm has the ability to evaluate a range of kernel parameters through cross-validation in order to find the optimum for a given kernel function. However, in order to have a direct comparison with the SVM, it was chosen to use the RBF kernel with the $\gamma$-parameter value found to be optimum for this kernel with the SVM (the $C$-parameter mentioned above is specific to the SciKit-Learn implementation of the RBF, and so not relevant for the MatLab kernelized perceptron). A scan of the gradient descent step size $\eta$ was performed, first with un-normalized data and then with normalized data. Three such runs were done for each value in the range $10^{-5}\le\eta\le10^{-1}$, but due to time restrictions only one such run was done for each value in the range $10^{0}\le\eta\le10^{5}$, and the results are shown in Fig{???}. Only 10\% of the full 250,000 example HMLC training data was used here, with 20,000 examples used for training and 5,000 examples used for testing. All runs were done on a single node of the SFU High Energy Physics (HEP) group computing cluster.
+The kernelized perceptron algorithm has the ability to evaluate a range of kernel parameters through cross-validation in order to find the optimum for a given kernel function. However, in order to have a direct comparison with the SVM, it was chosen to use the RBF kernel with the $\gamma$-parameter value found to be optimum for this kernel with the SVM (the $C$-parameter mentioned above is specific to the SciKit-Learn implementation of the RBF, and so not relevant for the MatLab kernelized perceptron). A scan of the gradient descent step size $\eta$ was performed, first with un-normalized data and then with normalized data. Three such runs were done for each value in the range $10^{-5}\le\eta\le10^{-1}$, but due to time restrictions only one such run was done for each value in the range $10^{0}\le\eta\le10^{5}$, and the results are shown in Fig\ref{fig:kp}. Only 10\% of the full 250,000 example HMLC training data was used here, with 20,000 examples used for training and 5,000 examples used for testing. All runs were done on a single node of the SFU High Energy Physics (HEP) group computing cluster.
 
 It can be seen that there is similar performance for both the training and testing data when normalized, and although performance is generally improved in both cases for un-normalized data, the improvement is more significant for the training set than the testing set. These observations indicate that normalization is not only a hindrance for this algorithm, but that it is somehow affecting the expected performance, which should typically be better for training data compared to testing data. Furthermore, there seems to be a greater spread in the performance values of normalized data, showing lower stability with respect to the stochastic procedure. Although not conclusive due to relatively low statistics, it could be that there is a peaked trend in the performance for normalized data, where the average seems to tend to a maximum around $\eta=1$. This may also be true of the un-normalized data, but the effect is much more subtle and would require more work to assess properly. The best performance on un-normalized testing data was 76.98\% for $\eta=10^{-5}$, and the best performance on normalized testing data was a slightly larger 77.54\% for $\eta=1$, but, for the reasons discussed, this latter value is not as impressive in light of the general negative aspects of normalization seen here.
 
+\begin                  {figure}
+\begin                  {center}
+\includegraphics        [scale = 0.6]
+                        {kp.pdf}
+\caption                {\small\textit{Left: Training data; Right: Testing data\\Blue: Un-normalized; Green: Normalized}}
+\label                  {fig:kp}
+\end                    {center}
+\end                    {figure}
 
 % **************************************************************************************************************************
 
