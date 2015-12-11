@@ -191,7 +191,7 @@ The above can be mathematically summarized via the following modified cost funct
 %%First was the adaptation of two existing classifier codes, one being driven by
 %%, which is large enough to give memory management issues when running on personal machines, as so with the license-restricted MatLab suite
 %%Given the relative simplicity of the HMLC dataset, there was nothing to suggest that these relatively simple SVM and KP approaches would be invalid, and indeed they performed as desired.
-Baseline algorithms were created to compare to later approaches with adversarial training. These were made by adapting existing codes for a Support Vector Machine (SVM) and a Kernelized Perceptron (KP). The former operates as part of the Python SciKit-Learn framework, and the latter was in fact based on the MatLab code from SFU CMPT419/726 assignment 2, but translated into Python in order to be run outside of the MatLab environment. This translation was soon found to be useful for the sake of running on large fractions of the training data.
+Baseline algorithms were created to compare to later approaches with adversarial training. These were made by adapting existing codes for a Support Vector Machine (SVM) and a Kernelized Perceptron (KP). The former operates as part of the Python SciKit-Learn framework, and the latter was in fact based on the MatLab code from SFU CMPT419/726 assignment-2, but translated into Python in order to be run outside of the MatLab environment. This translation was soon found to be useful for the sake of running on large fractions of the training data.
 
             \subsection {SVM}
             \label      {SVM}
@@ -200,11 +200,11 @@ As SciKit-Learn has a mature SVM implementation in sklearn.svm.SVC, it was a cle
 
 \begin{center}
 \begin{tabular}{l c c c c}
-  {\bf KERNEL} & $C$ & $\gamma$ & {\bf Coef0} & {\bf DEGREE}
+{\bf KERNEL} & $C$ & $\gamma$ & {\bf Coef0} & {\bf DEGREE}
 \\ \hline \\
-  Polynomial            & $10-100,000$ & $0.001-10,000$    & $0,1$ & $1,2,3$\\
-  Sigmoid               & $10-100,000$ & $0.001-10,000$    & $0,1$ & N/A\\
-  Radial Basis Function & $10-100,000$ & $0.00001-100,000$ & N/A   & N/A\\
+Polynomial            & $10-100,000$ & $0.001-10,000$    & $0,1$ & $1,2,3$\\
+Sigmoid               & $10-100,000$ & $0.001-10,000$    & $0,1$ & N/A\\
+Radial Basis Function & $10-100,000$ & $0.00001-100,000$ & N/A   & N/A\\
 \end{tabular}
 \end{center}
 
@@ -234,15 +234,25 @@ There is similar performance for both the normalized training and testing data, 
 \section                {Main Algorithms}
 \label                  {sec:main_algorithms}
 
-With the intention of developing a neural network with adversarial training in mind, a logical first step was to modify an existing neural network already in hand. Once again the SFU CMPT419/726 assignments came in useful here, with the third and final assignment involving the completion of a simple MatLab neural network for handwritten digit recognition. This code was adapted for use with the HMLC dataset, and given some further refinements such as optional training data normalization. Satisfied that the code worked as intended in this state, the adversarial components were then introduced. These additions sit entirely within the inner calculation loop, following the existing error backpropagation code lines but before the weight update step, as described in \S\ref{sec:adversarial_training}. By simply setting the perturbation size $\epsilon$ to zero, the adversarial calculations are rendered null and void, and the code performs the same as prior to their inclusion, as should be so.
+%%Satisfied that the code worked as intended in this state,
+%%, as described in \S\ref{sec:adversarial_training}
+%%null and void, and the code performs the same as prior to their inclusion, as should be so.
+With the intention of developing a neural network with adversarial training, a logical first step was to modify an existing code. Once again the SFU CMPT419/726 assignments came in useful here, with assignment-3 involving the completion of a simple MatLab neural network. This was adapted for use with the HMLC dataset and given some further refinements such as optional normalization, then the adversarial components were introduced. These additions sit within the inner calculation loop, following the existing error backpropagation but before the weight update. By simply setting the perturbation size $\epsilon$ to zero, the adversarial calculations are rendered inneffective if desired.
 
-Due to time restrictions, this MatLab code was unfortunately not translated into a more general language such as Python, which, as mentioned in \S\ref{sec:baseline_algorithms}, would have allowed ease of use of a greater fraction of training data. However, in the interests of time even the kernelized perceptron was run on only 10\% of the full HMLC training data, as mentioned in \S\ref{sec:kernelized_perceptron}, despite being able to handle larger datasets than its MatLab version. The MatLab neural network could comfortably be run in the same way, so with 20,000 examples for training and 5,000 examples for testing. The weight update step size for these tests was maintained at a constant $10^{-5}$, with the perturbation size $\epsilon$ scanned in the range $0\le\epsilon\le10^{-1}$. The level of adversarial training is directly proportional to $\epsilon$, so with $\epsilon=0$ essentially being the same as having no adversarial component in the code at all.
+%%, as mentioned in \S\ref{sec:baseline_algorithms},
+%%The level of adversarial training is directly proportional to $\epsilon$, so with $\epsilon=0$ essentially being the same as having no adversarial component in the code at all.
+Due to time restrictions this MatLab code was not translated into a more general language such as Python, which would have allowed ease of use of a greater fraction of training data. However, in the interests of time even the Python KP was run on only 10\% of the full HMLC training data, as mentioned in \S\ref{sec:kernelized_perceptron}, despite being able to handle larger datasets. The MatLab neural network could comfortably be run in the same way, so with 20,000 examples for training and 5,000 examples for testing. The weight update step size for these tests was maintained at a constant $10^{-5}$, with the perturbation size $\epsilon$ scanned in the range $0\le\epsilon\le10^{-1}$.
 
-Figure \ref{fig:fig2} shows the results of this testing. Like the kernelized perceptron, the MatLab neural network displays similar values for both training and testing data when normalized, but with the former noticably greater than the latter, which was not so with the kernelized perceptron results. The values for the normalized case here are similar to those towards the upper performance range of the normalized KP, but the best normalized KP values are greater than those found here. However, there is only a relatively slight variation with $\epsilon$, to be discussed shortly, whereas the normalized KP values have much greater spread overall. So regardless of the better performance coming from the normalized KP rather than the normalized neural network, the latter code gives the impression of being more stable and consistent.
+%%there is only a relatively slight variation with $\epsilon$, whereas
+Figure \ref{fig:fig2} shows the results of this testing. Like the kernelized perceptron, the MatLab neural network gives similar values for both normalized training and testing data, but with the former noticably greater than the latter, which was not so with the KP results. The values for the normalized case here are similar to those towards the upper performance range of the normalized KP, but the best normalized KP values are greater than those found here. However, the normalized KP values have much greater spread overall, so regardless of the better performance being with the normalized KP data, it is the MatLab neural network that seems to be more stable and consistent.
 
-The most stark contrast between the KP and MatLab neural network is in going from normalized to un-normalized data. Normalization was deemed to be a hindrance for the KP, but it seems to be beneficial for the MatLab neural network. Not only is performace better in the normalized case for the training data, but the relative gains for the testing data seem greater still i.e. there is a greater jump from un-normalized to normalized for the testing data than the training data. Exactly why this is the case is unknown, so without going into speculation this will have to remain a point for further investigation.
+%The most stark contrast between the KP and MatLab neural network is in going from normalized to un-normalized data.
+%i.e. there is a greater jump from un-normalized to normalized for the testing data than the training data.
+Whereas normalization was deemed to be a hindrance for the KP, it seems to be beneficial for the MatLab neural network. Not only is performace better for the normalized training data, but the relative gains for the testing data seem greater still. Exactly why this is the case is unknown, so this will have to remain a point for further investigation.
 
-Perhaps the most crucial aspect of these tests is the effect of the adversarial perturbation size $\epsilon$, this being the key to the technique under scrutiny. Note that the $x$-axes of Figure \ref{fig:fig2} are on a log-scale, and so do not naturally show the output for $\epsilon=0$. These data points are nonetheless present on the far left of each plot by means of artificially setting $\epsilon=0$ to $\epsilon=10^{-6}$. In all cases, for both training and testing data, un-normalized and normalized, the performance seems to decrease with $\epsilon$. This trend is significantly deviated from only for the last point of the un-normalized testing data, which may just be a statistical effect. The important point is that there does seem to be a clear trend here, but, again, further investigation would be required to effectively exploit it.
+%%, this being the key to the technique under scrutiny
+%%, for both training and testing data, un-normalized and normalized,
+Perhaps the most crucial aspect of these tests is the effect of the adversarial perturbation size $\epsilon$. Note that the $x$-axes of Figure \ref{fig:fig2} are on a log-scale, and so do not naturally show the output for $\epsilon=0$. These data points are nonetheless present on the far left of each plot by means of artificially setting $\epsilon=0$ to $\epsilon=10^{-6}$. In all cases the performance seems to decrease with $\epsilon$, this trend being significantly deviated from only for the last point of un-normalized testing data, which may just be statistical. The important point is that there does seem to be a clear trend here, but, again, further investigation would be required to effectively exploit this.
 
 \begin                  {figure}
 \begin                  {center}
@@ -253,17 +263,18 @@ Perhaps the most crucial aspect of these tests is the effect of the adversarial 
 \end                    {center}
 \end                    {figure}
 
-The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end, following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for performing tensor computations efficiently by treating them symbollicaly. As such, it is very useful in machine learning applications. It is a competent package which is well supported and, importantly, well documented, and was a natural choice following the progression of work up to this point. Further, as the modification to the cost function $J$ required access to several gradients of the cost function, Theano's symbolic integration allowed for quick experimentation with many different cost functions. An example Theano neural network code was taken as a basis and adapted for the HMLC dataset. Specifically, a Multilayer Perceptron was written using Theano to classify the HMLC dataset. The network consisted of 30 node input layer, normalized, a hidden layer with 600 nodes and tanh as an activation function, and an output layer with two nodes, using softmax to read the output. The network was trained on a 2013 Macbook Pro with 2 cores and 8GB of ram, for 100 epochs. As with the baseline algorithms, the data was split into 225,000 training samples and 25,000 validation samples.Two cost functions were used in testing. The results are summarized below:
+%%The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end,
+Following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for efficient and symbolic tensor computations. As such, it is very useful in machine learning applications. It is a competent package which is well supported and, importantly, well documented, and was a natural choice following the progression of work to this point. Furthermore, as the modification to the cost function $J$ requires access to several sets of derivative, Theano's symbolic nature allows for quick experimentation with many different cost functions.
+
+An example Theano Multilayer Perceptron was taken as a basis and adapted for the HMLC dataset. The network consists of a normalized 30-node input layer, a 600-node hidden layer using a tanh activation function, and 2-node output layer using a softmax function. This system was trained on a 2013 Macbook Pro with 2 cores and 8GB of ram, for 100 epochs. As with the SVM baseline, the data was split into 225,000 training samples and 25,000 validation samples. Two cost functions were used in testing. The results are summarized below:
+
 \begin{center}
-	\begin{tabular}{|l|c|c|}
-	  \hline
-	  cost&non-adversarial&adversarial \\
-	  \hline
-	  Negative log likelihood&$73.368$&$74.552$\\
-	  \hline
-	  Cross entropy&$65.5$&$65.5$ \\
-	  \hline
-	\end{tabular}
+\begin{tabular}{l c c}
+{\bf COST FUNCTION} & {\bf NON-ADVERSARIAL} & {\bf ADVERSARIAL}\\
+\\ \hline \\
+Negative log likelihood & $73.368$ & $74.552$\\
+Cross entropy           & $65.5$   & $65.5$\\
+\end{tabular}
 \end{center}
 
 % **************************************************************************************************************************
