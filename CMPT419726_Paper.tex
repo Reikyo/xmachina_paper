@@ -282,39 +282,15 @@ Cross entropy           & $65.5$   & $65.5$\\
 \section                {Conclusion}
 \label                  {sec:conclusion}
 
-The purpose of this project was to evaluate the affect of adding adversarial training to neural networks modeled for the Higgs Machine Learning Challenge. First, we implemented an SVM and a Kernel Perceptron. These gave us a baseline for how well simple models could perform on the challenge. Next, we added adversarial training to the neural network adapted from Assignment 3. Finally, we implemented a more robust neural network in Python using Theano. The following table shows each model implementation and its corresponding correct classification rate:
-
-\begin{center}
-	\begin{tabular}{|l|c|}
-	  \hline
-	  model implementation&correct validation classification percentage \\
-		\hline
-		SVM&$73.744$ \\
-		\hline
-		Kernel Perceptron&$76.98$ \\
-		\hline
-		Matlab NN (non-adversarial)&  \\
-		\hline
-		Matlab NN (adversarial)&  \\
-	  \hline
-	  Python/Theano NN with Negative log likelihood (non-adversarial)&$73.368$ \\
-		\hline
-		Python/Theano NN with Negative log likelihood (adversarial)&$74.552$ \\
-	  \hline
-	  Python/Theano NN with Cross entropy (non-adversarial)&$65.5$ \\
-		\hline
-	  Python/Theano NN with Cross entropy (non-adversarial)&$65.5$ \\
-	  \hline
-	\end{tabular}
-\end{center}
+The purpose of this project was to evaluate the affect of adding adversarial training to neural networks modeled for the Higgs Machine Learning Challenge. First, we implemented an SVM and a Kernel Perceptron. These gave us a baseline for how well simple models could perform on the challenge. Next, we added adversarial training to the neural network adapted from Assignment 3. Finally, we implemented a more robust neural network in Python using Theano.
  
 The well-tuned SVM classified validation samples correctly at a rate of 73.744 percent. Similarly, the kernel perceptron classified 76.98 percent of validation samples correctly. The simple neural networks performed on par with these baseline algorithms when using a negative log likelihood cost function. Without adversarial training, the Python/Theano neural network classified 73.368 percent of validation samples correctly. This was a nearly identical success rate to the much more well-tuned SVM. Although the neural network performed slightly worse than the Kernel Perceptron, such a simple neural network shows more potential for improvement. These observations, along with the fact that the winner of the competition used neural networks, validate feet forward neural networks as a competent model for this classification problem.
 
-Adding adversarial training to our neural networks had somewhat mixed results. In both cases where negative log likelihood was used as the cost function, adversarial training slightly improved the classification rate. On the other hand, when cross-entropy was used as the cost function, no change was observed in the classification rate between the same network with and without adversarial training on the same training and validation set. Overall, we view these results as strengthening the case for adversarial training. There were no cases where the addition of adversarial training hindered classification performance. Additionally, two of the three neural networks improved due to adversarial training.
+Adding adversarial training to our neural networks had somewhat mixed results. In the neural network implemented in Matlab, adversarial training hindered the rate of correct classification slightly. On the other hand, for the neural network trained with Theano, adversarial training slightly improved the classification rate. When cross-entropy was used as the cost function, no change was observed in the classification rate between the same network with and without adversarial training. Overall, these results seem inconclusive. The case for adversarial training helping improve the model is slightly stronger, since the neural network using Theano ran over a much larger data set, but more testing is needed to come to a conclusion. For now, validation should be performed on a case-by-case basis to decide if adversarial training helps a specific neural network for a specific problem.
 
-To address the question of whether adding adversarial training is worth it or not, we examine the cost of implementation and the increased training time. In terms of implementing, the "fast gradient sign method" lives up to its name. The calculations needed to produce each adversarial sample are performed while training against the corresponding given training sample in neural networks. So, producing the adversarial samples is almost free in terms of time spent. The only significant time increase is due to training against each adversarial sample. Since every given training example produces a corresponding adversarial example, there are twice as many samples to train against when using adversarial training. Therefore, adversarial training takes twice as long as non-adversarial training in neural networks. For our simple neural networks, this increase in training time was not a problem. In general, doubling training time could be significant when cross-validating for other network parameters. However, once the other parameters have been chosen, trading a 50 percent reduction in training speed to improve a neural network classifier is generally beneficial.
+To address the question of whether validating adversarial training is worth it or not, we examine the cost of implementation and the increased training time. In terms of implementing, the "fast gradient sign method" lives up to its name. The calculations needed to produce each adversarial sample are performed while training against the corresponding training sample in neural networks. So, producing the adversarial samples is almost free in terms of time spent. The only significant time increase is due to training against each adversarial sample. Since every given training example produces a corresponding adversarial example, there are twice as many samples to train against when using adversarial training. Therefore, adversarial training takes approximately twice as long as non-adversarial training in neural networks. For our simple neural networks, this increase in training time was not a problem. In general, doubling training time could be significant when cross-validating for other network parameters. However, once the other parameters have been chosen, trading a 50 percent reduction in training speed to improve a neural network classifier is generally beneficial.
 
-The next step for our team would be to add adversarial training to the winning neural network model from the competition and test to see if it outperforms its predecessor. The improvement of our simple neural network shows promise for adversarial training to improve the winning model. Furthermore, due to the relative ease of implementation and minimal increase in training time, validating this method of adversarial training is advisable for any neural network classifier.
+The next step for our team would be to add adversarial training to the winning neural network model from the competition and test to see if it outperforms its predecessor. The improvement of one of our simple neural networks shows promise for adversarial training to improve the winning model. Furthermore, due to the relative ease of implementation and minimal increase in training time, validating this method of adversarial training is advisable for any neural network classifier.
 
 % **************************************************************************************************************************
 
