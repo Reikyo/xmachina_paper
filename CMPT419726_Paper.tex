@@ -1,4 +1,4 @@
-\documentclass{article} % For LaTeX2e
+\documentclass          {article} % For LaTeX2e
 \usepackage             {amsmath}
 \usepackage             [center]
                         {caption}
@@ -9,7 +9,7 @@
 \usepackage             {url}
 %\documentstyle[nips14submit_09,times,art10]{article} % For LaTeX 2.09
 
-\title{Higgs Machine Learning Challenge \\with Neural Network Adversarial Training}
+\title                  {Higgs Machine Learning Challenge \\with Neural Network Adversarial Training}
 
 %\author{
 %
@@ -37,69 +37,75 @@
 %Burnaby, BC V5A 1S6\\
 %\texttt{mjenkins@sfu.ca}\\
 
-% The \author macro works with any number of authors. There are two commands
-% used to separate the names and addresses of multiple authors: \And and \AND.
-%
-% Using \And between authors leaves it to \LaTeX{} to determine where to break
-% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
-% puts 3 of 4 authors names on the first line, and the last on the second
-% line, try using \AND instead of \And before the third author name.
-
-\newcommand{\fix}{\marginpar{FIX}}
-\newcommand{\new}{\marginpar{NEW}}
+\newcommand             {\fix}{\marginpar{FIX}}
+\newcommand             {\new}{\marginpar{NEW}}
 
 %\nipsfinalcopy % Uncomment for camera-ready version
 
-\begin{document}
+\begin                  {document}
 
 \maketitle
 
-\begin{abstract}
-The Higgs particle was theorized in 1964 and finally discovered in 2012 from the ATLAS and CMS experiments at CERN. This particle is the keystone of the Standard Model of particle physics, and provides the mechanism by which other particles acquire mass. Such discoveries are statistical in nature, and require vast amounts of information from the debris of particle collisions. Sifting and categorizing this data is a continual challenge, and in 2014 CERN and Kaggle invited the public to try their hand at such work, via the Higgs Machine Learning Challenge. A number of top entries, including the winner, used neural networks. An extended approach using the so-called "adversarial training" technique is presented herein.
-\end{abstract}
+% **************************************************************************************************************************
+
+\begin                  {abstract}
+The Higgs particle was theorized in 1964 and finally discovered in 2012 by the ATLAS and CMS experiments at CERN. This particle is the keystone of the Standard Model of particle physics, and provides the mechanism by which other particles acquire mass. Such discoveries are statistical in nature, and require vast amounts of information from the debris of particle collisions. Sifting and categorizing this data is a continual challenge, and in 2014 CERN and Kaggle invited the public to try their hand at such work in the "Higgs Machine Learning Challenge". A number of top entries used neural networks, including the winner. An extended approach using the so-called "adversarial training" technique is presented herein.
+\end                    {abstract}
 
 % **************************************************************************************************************************
 
-\section{Introduction}
-\label{sec:introduction}
+               \section {Introduction}
+               \label   {sec:introduction}
 
-Particle physics arguably began with the discovery of the electron by J.J. Thomson in 18?? \cite{???}. This began a century of subsequent rapid discoveries of new particles, next being the identification of the proton in 19?? \cite{???} and then the neutron in 19?? \cite{???}, both by Ernest Rutherford. These three particles - electron, proton and neutron - are all that's needed to build the everyday chemical elements that comprise the apparent material universe. However, it was with early studies of cosmic rays that our understanding of fundamental particles began to change. One after the other more and more particles were discovered, with a broad spectrum of characteristics. Patterns slowly emerged, leading to the so-called Standard Model of particle physics, which encompasses not only particles of a material nature but also particles that transmit the very forces between them, thereby enabling their interactions.
+%%Particle physics arguably began with the discovery of the electron by J.J. Thomson in 18?? \cite{???}. This began a century of subsequent rapid discoveries of new particles, next being the identification of the proton in 19?? \cite{???} and then the neutron in 19?? \cite{???}, both by Ernest Rutherford. These three particles - electron, proton and neutron - are all that's needed to build the everyday chemical elements that comprise the apparent material universe. However, it was with early studies of cosmic rays that our understanding of fundamental particles began to change. One after the other more and more particles were discovered, with a broad spectrum of characteristics. Patterns slowly emerged, leading to the so-called Standard Model of particle physics, which encompasses not only particles of a material nature but also particles that transmit the very forces between them, thereby enabling their interactions.
 
-As part of this framework, an altogether different particle was theorized to exist in order to explain why certain particles have mass. This came to be known as the Higgs particle, named after the author of the groundbreaking 1964 paper by one of the pioneers of this field \cite{???}. So began a search that spanned nearly four decades, culminating with the discovery of the Higgs particle in 2012 from the Large Hadron Collider (LHC) at the CERN lab in Geneva, as measured by the ATLAS and CMS experiments \cite{???}. The tell-tale signals were given by the physics properties of the Higgs particle's decay products, as the particle itself cannot be directly observed due to decaying so rapidly that it cannot travel out of its creation region and into the detector.
+Alongside the well-known types of material and force-carrying particles, the Standard Model of particle physics has an altogether different type of entity, which was theorized to exist in order to explain why certain particles have mass. This came to be known as the Higgs particle, named after the author of the groundbreaking 1964 paper by one of the pioneers of this field \cite{???}. So began a search that spanned nearly four decades, culminating with the discovery of the Higgs particle in 2012 by the ATLAS and CMS experiments, which operate at the Large Hadron Collider (LHC) at the CERN lab in Geneva \cite{???}. The tell-tale signals were given by the physics properties of the Higgs particle's decay products, as the particle itself cannot be directly observed due to decaying so rapidly that it cannot travel out of its creation region and into the detector.
 
-There are two main abilities of the experimental apparatus that allowed for the Higgs particle to be discovered, that were not had with earlier experiments. First and foremost is the particle collision energy, and second is the ability of the detector equipment to record and analyze data. Every particle has a characteristic mass energy, and this energy must be met by a device such as the LHC in order for the particle to be created. Energy is the raw ingredient of all particles, in other words, and different particles require different amounts of this ingredient. The Higgs particle happens to be a relatively massive particle compared to a number of others, and therefore requires a relatively large amount of energy. A technological evolution over many years and many generations of device was necessary to develop the LHC, which is powerful enough to provide the Higgs creation energy.
+%%There are two main abilities of the experimental apparatus that allowed for the Higgs particle to be discovered, that were not had with earlier experiments.
+%%Energy is the raw ingredient of all particles, in other words, and different particles require different amounts of this ingredient.
+First and foremost for this discovery to happen was the particle collision energy, and second was the ability of the detectors to record and analyze data. Every particle has a characteristic mass energy, and this energy must be met by a device such as the LHC in order for the particle to be created. The Higgs particle happens to be a relatively massive particle compared to a number of others, and therefore requires a relatively large amount of energy. A technological evolution over many years and many generations of device was necessary to develop the LHC, which is powerful enough to provide the Higgs creation energy.
 
-Once created, a high mass particle such as the Higgs rapidly decays into other, lighter particles. It is these decay products that are detected by the machine surrounding the creation point, which are evaluated for such properties as momentum and electric charge, based on their trajectories through the machine, thereby leading to their classification. Originally, detectors were comprised of some continuous medium that would reveal a particle track that could be photographed and measured by hand. Things have since come a long way, with current detectors being formed of multiple layers of various electronics, each sampling the outgoing decay products in different ways. Despite the LHC providing an appropriate energy range for the creation of Higgs particles, their production is still exceedingly rare compared with the production of a number of other particles. An exceedingly large number of creation events is therefore required to compensate for the rarity, and the particle tracks simply cannot be assessed individually as used to be possible in photographic detectors from previous generations. The vast stream of electronic readout must instead be dealt with computationally and statistically, and a great deal of time and effort is spent by scientists determining how best to seek the signals of interest.
+%%Originally, detectors were comprised of some continuous medium that would reveal a particle track that could be photographed and measured by hand.
+%%Things have come a long way since early detectors, with modern devices being formed of multiple layers of electronics, each sampling the outgoing decay products in different ways.
+Once created, a high mass particle such as the Higgs rapidly decays into other, lighter particles, which may themselves decay further. A variety of these decay products that are detected and categorized by such properties as momentum and electric charge, based on their trajectories through the machine. This data is then used to infer the ancestral particle at the initial creation point.
 
-Machine learning has inevitably become an invaluable tool in this task, which, following the reconstruction of particle properties from the raw signal, is simply one of classification, namely it is a question of identifying signal versus background. In the case of the Higgs particle, its various decay channels are not unique, and are in fact shared by the decays of other heavy particles. Seeing a certain set of decay products does not then give indisputable proof of one particular parent particle or the other. But there are nonetheless subtle signs within the data when viewed \textit{en masse}, which machine learning algorithms can be trained to recognize.
+%%as used to be possible in photographic detectors from previous generations
+Despite the LHC providing an appropriate energy range for the creation of Higgs particles, their production is still exceedingly rare compared with the production of a number of other particles. An exceedingly large number of creation events is therefore required to compensate for the rarity, and the particle tracks simply cannot be assessed individually. The vast stream of electronic readout must be dealt with computationally and statistically, and a great deal of time and effort is spent by scientists determining how best to seek the signals of interest.
 
-In 2014, CERN scientists collaborated with the Kaggle machine learning organization, developing an open competition for the public to try and develop a machine learning classifier to distinguish the Higgs particle from other heavy particles in the tau-tau decay channel (explained further in \ref{sec:higgs_machine_learning_challenge}) \cite{???}. This was the Higgs Machine Learning Challenge (HMLC), which at the time of its release was the most popular Kaggle challenge up to that point, with a total of 35,772 uploaded entries submitted by 1,785 teams (1,942 people) comprised of participants from around the world, some working within the physics community, others simply interested in computing \cite{Rousseau2015}. The winning entry came from a sole programmer with no advanced physics training, who developed a neural network model that was clearly superior to anything else \cite{???}.
+%%, following the reconstruction of particle properties from the raw signal,
+Machine learning has inevitably become invaluable for this task, which is simply one of classification, namely a question of signal versus background. In the case of the Higgs particle, its various decay channels are not unique, and are in fact shared by the decays of other heavy particles. Seeing a certain set of decay products does not then give indisputable proof of one particular ancestor particle or the other. But there are nonetheless subtle signs within the data when viewed \textit{en masse}, which machine learning algorithms can be trained to recognize.
 
 %Tau particles are heavier versions of electrons, and just like other heavy particles they also decay into a range of products that enter the detector. It is therefore these decay products that are used to infer the taus, and the taus are then used to infer Higgs particles.
 
-Many technical fields are developing incredibly fast at present, and machine learning is no exception. Even just more than one year on from the Higgs machine learning challenge, new ideas and techniques have become available. This project seeks to explore one such technique that has started to generate a lot of interest of late, namely that of adversarial training, and to apply it to the HMLC.
+%%Many technical fields are developing incredibly fast at present, and machine learning is no exception. Even just more than one year on from the Higgs machine learning challenge, new ideas and techniques have become available. This project seeks to explore one such technique that has started to generate a lot of interest of late, namely that of adversarial training, and to apply it to the HMLC.
 
 % **************************************************************************************************************************
 
-\section{Higgs Machine Learning Challenge}
-\label{sec:higgs_machine_learning_challenge}
+               \section {Higgs Machine Learning Challenge}
+               \label   {sec:higgs_machine_learning_challenge}
 
-Despite machine learning being a key component to many physics analyses at CERN, there is relatively little development of these techniques within the organisation itself \cite{Rousseau2015}. When one technique is found to work and is well understood, and, crucially, it is well understood how to interpret the resulting physics results, then that technique gets entrenched and remains in play for a long time. This is not a bad thing in many ways, as by having staple workhorse codes it is possible for physicists to spend a greater fraction of their time analysing the data in search of physics.
+In 2014, CERN scientists collaborated with the Kaggle machine learning organization, developing an open competition for the public to try and develop a machine learning classifier to distinguish the Higgs particle from other heavy particles in the tau-tau decay channel \cite{???}. This was the Higgs Machine Learning Challenge (HMLC), which at the time of its release was the most popular Kaggle challenge up to that point, with a total of 35,772 uploaded entries submitted by 1,785 teams (1,942 people) comprised of participants from around the world, some working within the physics community, others simply interested in computing \cite{Rousseau2015}. The winning entry came from a sole programmer with no advanced physics training, who developed a neural network model that was clearly superior to anything else \cite{Rousseau2015}.
 
-However, machine learning is a field in its own right, and has its own experts and development trends quite separate from any of its applications, in science or otherwise. The last decade in particular has seen an enormous rise in both the ability of machine learning and the applications \cite{Rousseau2015}. An ever increasing fraction of the developed world's activities has some computational aspect, and with that comes more data and more need to analyse that data for patterns. Coupled with this is the increase in the ability of hardware to run ever more complicated algorithms, making theoretical work from previous generations of computer science suddenly more relevant and useful.
+%%Despite machine learning being a key component to many physics analyses at CERN, there is relatively little development of these techniques within the organisation itself \cite{Rousseau2015}. When one technique is found to work and is well understood, and, crucially, it is well understood how to interpret the resulting physics results, then that technique gets entrenched and remains in play for a long time. This is not a bad thing in many ways, as by having staple workhorse codes it is possible for physicists to spend a greater fraction of their time analysing the data in search of physics.
 
-The Higgs Machine Learning Challenge (HMLC) was develped in order to tap into the knowledge of this field straight from the enthusiasts, in order to port that knowledge into the particle physics domain. This is not only beneficial for CERN, but also the machine learning community at large, which demands as many real world problems as possible in order to develop the most relevant algorithms \cite{Rousseau2015}. Sourcing good data is a job in itself, and if there's one thing that CERN is good at it's generating data. The HMLC was therefore a mutually beneficial arrangement for the data generation experts and the data processing experts.
+%%However, machine learning is a field in its own right, and has its own experts and development trends quite separate from any of its applications, in science or otherwise. The last decade in particular has seen an enormous rise in both the ability of machine learning and the applications \cite{Rousseau2015}. An ever increasing fraction of the developed world's activities has some computational aspect, and with that comes more data and more need to analyse that data for patterns. Coupled with this is the increase in the ability of hardware to run ever more complicated algorithms, making theoretical work from previous generations of computer science suddenly more relevant and useful.
 
-The HMLC has two datasets - one fully labelled dataset for training, and another unlabelled dataset for testing. The training dataset has information about 250,000 labelled events, and the testing dataset corresponds to 550,000 unlabelled events. There are only two labels involved, namely "signal" and "background". In a particle physics collider, two input particles (protons in the case of the LHC for ATLAS and CMS experiments) are accelerated and collided at high speed, resulting in a high energy state that can form any particle which "costs" that amount of energy or less. Call this created particle the \textit{initial state}. This initial state often has a number of possible decay channels to some set of \textit{final state} particles, and some initial states share similar final states. In the case of the Higgs particle, one decay channel is that to a pair of lighter tau particles, with these then decaying to yet lighter particles still. These events are those labelled as "signal". Such final states are possible from the decay of other initial states such as W and Z particles (which are the carriers of the weak force) and top particles (which are the heaviest of the quark family) \cite{Rousseau2015}. These events are those labelled as "background".
+%%The Higgs Machine Learning Challenge (HMLC) was develped in order to tap into the knowledge of this field straight from the enthusiasts, in order to port that knowledge into the particle physics domain. This is not only beneficial for CERN, but also the machine learning community at large, which demands as many real world problems as possible in order to develop the most relevant algorithms \cite{Rousseau2015}. Sourcing good data is a job in itself, and if there's one thing that CERN is good at it's generating data. The HMLC was therefore a mutually beneficial arrangement for the data generation experts and the data processing experts.
 
-It is the subtle differences in the ensemble physics variables that we seek to distinguish through machine learning. Both training and testing datasets are defined by a feature set comprised of 30 different physics variables, representing quantities such as the mass, energy and momentum of decay products that entered the detector or were otherwise inferred \cite{Rousseau2015, Chen2015}. These entities are either (1) electrons, (2) heavier variants of electrons (the muon and tau particles), (3) jets of particles comprised of quarks (which are particles within the family of the constituents of protons and neutrons), and (4) so-called missing energy, representing very light and weakly interacting particles called neutrinos, which are not directly detected but inferred via a deficit in the energy accounting \cite{Chen2015}.
+The HMLC has two datasets - one fully labelled dataset for training, and another unlabelled dataset for testing. The training dataset has information about 250,000 labelled events, and the testing dataset corresponds to 550,000 unlabelled events. The labels are simply "signal" and "background". In a particle physics collider, two input particles (protons in the case of the LHC for ATLAS and CMS experiments) are accelerated and collided at high speed, resulting in a high energy state that can form any particle which "costs" that amount of energy or less. Call this created particle the \textit{initial state}. This initial state often has a number of possible decay channels to some set of \textit{final state} particles, and some initial states share similar final states. In the case of the Higgs particle, one decay channel is that to a pair of lighter tau particles, with these then decaying to yet lighter particles still. These events are those labelled as "signal". Such final states are possible from the decay of other initial states such as W and Z particles (which are the carriers of the weak force) and top particles (which are the heaviest of the quark family) \cite{Rousseau2015}. These events are those labelled as "background".
 
-Physics details aside, this format of problem is ubiquitous and well known to machine learning, and as such requires no knowledge or understanding of what any of the features actually are. The HMLC dataset is actually a vastly simplified version of the data actually encountered by CERN physicists, who have to carefully reconstruct such high level output from a very low level input. The HMLC dataset was carefully tailored to be simply enough for public use, but still complicated and realistic enough to promote machine learning techniques that could be of actual use \cite{Rousseau2015}. Furthermore, the dataset is in fact the product of a very fine Monte Carlo simulation, of the sort that is actually used for understanding the background in real data. The signal to background ratio in the HMLC dataset is much larger than that in real data, which requires many millions of events in order to provide statistically significant findings.
+%% (which are particles within the family of the constituents of protons and neutrons)
+%%, which are not directly detected but inferred via a deficit in the energy accounting
+It is the subtle differences in the ensemble physics variables that we seek to distinguish through machine learning. Both training and testing datasets are defined by a feature set comprised of 30 different physics variables, representing quantities such as the mass, energy and momentum of decay products that entered the detector or were otherwise inferred \cite{Rousseau2015, Chen2015}. These entities are either (1) electrons, (2) heavier variants of electrons (muons and taus), (3) jets of particles comprised of quarks, and (4) so-called missing energy, representing very light and weakly interacting particles called neutrinos \cite{Chen2015}.
+
+%%who have to carefully reconstruct such high level output from a very low level input.
+%%Furthermore, the dataset is in fact the product of a very fine Monte Carlo simulation, of the sort that is actually used for understanding the background in real data.
+Physics details aside, this format of problem is ubiquitous in machine learning, and requires no knowledge or understanding of what the features actually are. The HMLC dataset is actually a vastly simplified version of Monte Carlo simulated data used by CERN physicists. It was carefully tailored to be simply enough for public use, but still interesting enough to promote useful machine learning techniques \cite{Rousseau2015}. The signal to background ratio in the HMLC dataset is much larger than that in real data, which requires many millions of events in order to provide statistically significant findings, so being impractical for the HMLC.
 
 % **************************************************************************************************************************
 
-\section{HMLC Winner and Initial Impulse}
-\label{sec:hmlc_winner_and_initial_impulse}
+               \section {HMLC Winner and Initial Impulse}
+               \label   {sec:hmlc_winner_and_initial_impulse}
 
 As mentioned in \S\ref{sec:introduction}, there were many hundreds of entrants to the original Kaggle competition, with the overall winner being a single programmer with no professional physics training, specializing instead in computational development and consulting \cite{Rousseau2015}. In fact, the physicist with the best score came in eighth place overall, highlighting the disparity in the computational skill sets between the professions, as should be somewhat expected. It was, after all, with such an outcome in mind that the challenge was run in the first place.
 
@@ -109,8 +115,8 @@ All these elements of the winning entry were included for good reasons. The effe
 
 % **************************************************************************************************************************
 
-\section{Adversarial Training}
-\label{sec:adversarial_training}
+               \section {Adversarial Training}
+               \label   {sec:adversarial_training}
 
 The generative approach originally suggested by the Kaggle winner regarded Generative Adversarial Networks (GANs), which have been the subject of much interest over the last year or so, following work based on image recognition published in 2014 by Goodfellow \textit{et al.}, based at the University of Montreal \cite{Goodfellow2014}. The idea is to train not only one machine learning system, but two. One system trys to discriminate the classes of a given set of training data, and the other system tries to generate new data examples that can fool the former system into passing them as real. The discriminator \textit{D} is positively reinforced for every example it correctly classifies, and for every fake example it deems as such, with the generator \textit{G} being positively reinforced for every example it makes which passes off as real data. In practice this can be done by setting up \textit{D} and \textit{G} as multilayer perceptrons, using backpropagation and dropout training techniques with piecewise linear units, with the reinforcement criteria set up as a competitive "minimax" game between the two systems, hence the "adversarial" in the GAN acronym.
 
@@ -162,13 +168,13 @@ The above can be mathematically summarized via the following modified cost funct
 
 % **************************************************************************************************************************
 
-\section{Baseline Algorithms}
-\label{sec:baseline_algorithms}
+               \section {Baseline Algorithms}
+               \label   {sec:baseline_algorithms}
 
 In order to observe the effects of the chosen adversarial training approach, and to observe the evolution of the implementation, a number of baselines were created. First was the adaptation of two existing classifier codes, one being driven by a Support Vector Machine (SVM) algorithm and the other by a Kernelized Perceptron (KP) algorithm. The former operates as part of the Python SciKit-Learn framework, and the latter was in fact based on the MatLab code developed as part of SFU CMPT419/726 assignment 2, but translated into Python in order to be run outside of the MatLab environment. This was soon found to be necessary for the sake of running on significant fractions of the given training data, which is large enough to give memory management issues when running on personal machines, as so with the license-restricted MatLab suite. Given the relative simplicity of the HMLC dataset, there was nothing to suggest that these relatively simple SVM and KP approaches would be invalid, and indeed they performed as desired.
 
-\subsection{SVM}
-\label{SVM}
+            \subsection {SVM}
+            \label      {SVM}
 As SciKit-Learn has a mature SVM implementation in sklearn.svm.SVC, it was a clear choice to use with the HMLC dataset. The SVC class supports several kernel functions by default, each with its own set of parameters. To find optimal parameters, a 5-fold cross-validation was performed using sklearn.grid\_search. To facilitate this parameter tuning, grid search was run on a 50,000 example subset of the entire dataset. The following table lists the kernels and parameters tried during the grid search. Note that $\gamma$ and $C$ are ranges. For $C$ the range is exponents, while the gamma values are spaced evenly on a log scale, starting and ending with the values in the table.
 
 \begin{center}
@@ -187,8 +193,8 @@ As SciKit-Learn has a mature SVM implementation in sklearn.svm.SVC, it was a cle
 
 Having chosen an optimal kernel and parameters, the entire training set of 250,000 examples was randomly split into 225,000 training samples, and 25,000 validation samples. The SVM was trained using a radial-basis function (RBF) kernel, with parameters $C=1,000$ and $\gamma=0.00024883895413685354$. The overall score obtained was $73.744$\%. For the signal class, precision was $83$ percent, and recall was $30$ percent. For the background class, precision was $72$\%, while recall was $97$\%.
 
-\subsection{Kernelized Perceptron}
-\label{kernelized_perceptron}
+            \subsection {Kernelized Perceptron}
+            \label      {kernelized_perceptron}
 The kernelized perceptron algorithm has the ability to evaluate a range of kernel parameters through cross-validation in order to find the optimum for a given kernel function. However, in order to have a direct comparison with the SVM, it was chosen to use the RBF kernel with the $\gamma$-parameter value found to be optimum for this kernel with the SVM (the $C$-parameter mentioned above is specific to the SciKit-Learn implementation of the RBF, and so not relevant for the MatLab kernelized perceptron). A scan of the gradient descent step size $\eta$ was performed, first with un-normalized data and then with normalized data. Three such runs were done for each value in the range $10^{-5}\le\eta\le10^{-1}$, but due to time restrictions only one such run was done for each value in the range $10^{0}\le\eta\le10^{5}$, and the results are shown in Figure \ref{fig:fig1}. Only 10\% of the full 250,000 example HMLC training data was used here, with 20,000 examples used for training and 5,000 examples used for testing. All runs were done on a single node of the SFU High Energy Physics (HEP) group computing cluster.
 
 It can be seen that there is similar performance for both the training and testing data when normalized, and although performance is generally improved in both cases for un-normalized data, the improvement is more significant for the training set than the testing set. These observations indicate that normalization is not only a hindrance for this algorithm, but that it is somehow affecting the expected performance, which should typically be better for training data compared to testing data. Furthermore, there seems to be a greater spread in the performance values of normalized data, showing lower stability with respect to the stochastic procedure. Although not conclusive due to relatively low statistics, it could be that there is a peaked trend in the performance for normalized data, where the average seems to tend to a maximum around $\eta=1$. This may also be true of the un-normalized data, but the effect is much more subtle and would require more work to assess properly. The best performance on un-normalized testing data was 76.98\% for $\eta=10^{-5}$, and the best performance on normalized testing data was a slightly larger 77.54\% for $\eta=1$, but, for the reasons discussed, this latter value is not as impressive in light of the general negative aspects of normalization seen here.
@@ -204,8 +210,8 @@ It can be seen that there is similar performance for both the training and testi
 
 % **************************************************************************************************************************
 
-\section{Main Algorithms}
-\label{sec:main_algorithms}
+\section                {Main Algorithms}
+\label                  {sec:main_algorithms}
 
 With the intention of developing a neural network with adversarial training in mind, a logical first step was to modify an existing neural network already in hand. Once again the SFU CMPT419/726 assignments came in useful here, with the third and final assignment involving the completion of a simple MatLab neural network for handwritten digit recognition. This code was adapted for use with the HMLC dataset, and given some further refinements such as optional training data normalization. Satisfied that the code worked as intended in this state, the adversarial components were then introduced. These additions sit entirely within the inner calculation loop, following the existing error backpropagation code lines but before the weight update step, as described in \S\ref{sec:adversarial_training}. By simply setting the perturbation size $\epsilon$ to zero, the adversarial calculations are rendered null and void, and the code performs the same as prior to their inclusion, as should be so.
 
@@ -241,8 +247,8 @@ The MatLab neural network was intended to be no more than an advanced baseline s
 
 % **************************************************************************************************************************
 
-\section{Conclusion}
-\label{sec:conclusion}
+\section                {Conclusion}
+\label                  {sec:conclusion}
 
 The purpose of this project was to evaluate the affect of adding adversarial training to neural networks modeled for the Higgs Machine Learning Challenge. First, we implemented an SVM and a Kernel Perceptron. These gave us a baseline for how well simple models could perform on the challenge. Next, we added adversarial training to the neural network adapted from Assignment 3. Finally, we implemented a more robust neural network in Python using Theano. The following table shows each model implementation and its corresponding correct classification rate:
 
@@ -280,8 +286,8 @@ The next step for our team would be to add adversarial training to the winning n
 
 % **************************************************************************************************************************
 
-\section*{Contributions}
-\label{sec:contributions}
+               \section*{Contributions}
+               \label   {sec:contributions}
 
 \begin{itemize}
 \item All: Survey of available tools; General research; Poster editing; Paper editing
@@ -293,8 +299,8 @@ The next step for our team would be to add adversarial training to the winning n
 
 % **************************************************************************************************************************
 
-\section*{References}
-\label{sec:references}
+               \section*{References}
+               \label   {sec:references}
 
 
 
