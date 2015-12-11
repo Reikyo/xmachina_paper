@@ -248,7 +248,7 @@ Figure \ref{fig:fig2} shows the results of this testing. Like the kernelized per
 
 %The most stark contrast between the KP and MatLab neural network is in going from normalized to un-normalized data.
 %i.e. there is a greater jump from un-normalized to normalized for the testing data than the training data.
-Whereas normalization was deemed to be a hindrance for the KP, it seems to be beneficial for the MatLab neural network. Not only is performace better for the normalized training data, but the relative gains for the testing data seem greater still. Exactly why this is the case is unknown, so this will have to remain a point for further investigation.
+Whereas normalization was deemed to be a hindrance for the KP, it seems to be beneficial for the MatLab neural network. Not only is performance better for the normalized training data, but the relative gains for the testing data seem greater still. Exactly why this is the case is unknown, so this will have to remain a point for further investigation.
 
 %%, this being the key to the technique under scrutiny
 %%, for both training and testing data, un-normalized and normalized,
@@ -266,7 +266,7 @@ Perhaps the most crucial aspect of these tests is the effect of the adversarial 
 %%The MatLab neural network was intended to be no more than an advanced baseline scenario, and to provide a development platform for the adversarial training components that could then be incorporated into something more sophisticated overall. To this end,
 Following an in-depth survey of available tools, the Python-based Theano framework was chosen as a basis for the final stage of this work. Theano is a specialized package for efficient and symbolic tensor computations. As such, it is very useful in machine learning applications. It is a competent package which is well supported and, importantly, well documented, and was a natural choice following the progression of work to this point. Furthermore, as the modification to the cost function $J$ requires access to several sets of derivative, Theano's symbolic nature allows for quick experimentation with many different cost functions.
 
-An example Theano Multilayer Perceptron was taken as a basis and adapted for the HMLC dataset. The network consists of a normalized 30-node input layer, a 600-node hidden layer using a tanh activation function, and 2-node output layer using a softmax function. This system was trained on a 2013 Macbook Pro with 2 cores and 8GB of ram, for 100 epochs. As with the SVM baseline, the data was split into 225,000 training samples and 25,000 validation samples. Two cost functions were used in testing. The results are summarized below:
+An example Theano Multilayer Perceptron was taken as a basis and adapted for the HMLC dataset. The network consisted of a normalized 30-node input layer, a 600-node hidden layer using a tanh activation function, and 2-node output layer using a softmax function. This system was trained on a 2013 Macbook Pro with 2 cores and 8GB of ram, for 100 epochs. As with the SVM baseline, the data was split into 225,000 training samples and 25,000 validation samples. Two cost functions were used in testing. The results are summarized below:
 
 \begin{center}
 \begin{tabular}{l c c}
